@@ -1,0 +1,137 @@
+<!doctype html>
+<html id="maaya">
+<head>
+    <link rel="stylesheet" type="text/css" href="/static/theme-dark.less.css">
+    <script src="/static/robocore.js"></script>
+    <script src="jquery.ui.touch-punch.min.js"></script>
+    <link href="ui.css" rel="stylesheet">
+</head>
+<body>
+ 
+<div id="controls">
+    <button type-active id="b0">0</button>
+    <button type-active id="b1">1</button>
+    <button type-active id="b2">2</button>
+    <button type-active id="b3">3</button>
+    <button type-active id="b4">4</button>
+    <button type-active id="b5">5</button>
+    <button type-active id="b6">6</button>
+    <button type-active id="b7">7</button>
+    <button type-active id="b8">8</button>
+    <button type-active id="b9">9</button>
+    <button type-active id="calibrate">cal</button>    
+    <label id="l1"></label>
+</div>
+
+<div class="temperature">
+    <img src="cloud_icon.png" />
+    <span>25&deg;C</span>
+</div>
+
+<div class="wrapper">
+    <div class="window_outer">
+        <div class="blind">
+            &nbsp;
+        </div>
+        <div class="window_inner_frame">
+            <div class="window_inner_img">
+                &nbsp;
+            </div>
+        </div>
+    </div>
+    
+    <div class="select_blind">
+        <span class="icon left">&nbsp;</span>
+        <span>Living room</span>
+        <span class="icon right">&nbsp;</span>
+    </div>
+</div>
+
+<div class="wrapper2">
+    <hr/>
+    <div class="menu">
+        <button id="live">
+            <span class="icon live"></span>
+            <span class="btn-title">Live mode</span>
+        </button>
+        <button id="schedule">
+            <span class="icon schedule"></span>
+            <span class="btn-title">Schedule</span>
+        </button>
+        <button id="settings">
+            <span class="icon settings"></span>
+            <span class="btn-title">Settings</span>
+        </button>
+    </div>
+
+</div>
+
+
+<!--<div id="status-container">-->
+    <!--<div id="div_battery">Battery: <label id="lb_bat">10V</label></div>-->
+    <!--<label id="l1">label1</label>-->
+    <!--<label id="l2">label2</label>-->
+    <!--<button type-active id="btn1">light off</button>-->
+<!--</div>-->
+
+
+<console id="cl1"></console>
+
+<script>
+    
+    var blind_height_px;
+    var current_blind_pos = 0;
+    var blind_steps = 10;
+    var step_size_px;
+
+
+    function blind_change(event, ui) {
+        var current_blind_pos_px = ui.size.height;
+        var current_step = Math.round(current_blind_pos_px / step_size_px) - 1;
+        
+        $('#b'+current_step).trigger('mousedown');
+        
+        // ctrls_tout = setTimeout(function() {
+        //     $('#controls button').trigger('mouseup');
+        // }, 10);
+    }
+
+    $(document).ready(function() {
+        
+        blind_height_px =  $(".window_outer").outerHeight()-6;
+        var tout;
+    
+        $('.blind').resizable({
+            handles: 'n, s',
+            minHeight: 20,
+            maxHeight: blind_height_px
+        }).on('resize', function(event, ui) {
+            clearTimeout(tout);
+            tout = setTimeout(function() {
+                blind_change(event, ui)
+            }, 20);
+        }).on('resizestop', function(event, ui) {
+            $('#controls button').trigger('mouseup')
+        }).on('resizestart', function(event, ui) {
+
+        });
+    });
+    
+    function window_resize() {
+        blind_height_px =  $(".window_outer").outerHeight()-6;
+        step_size_px = blind_height_px / blind_steps;
+        $( ".blind" ).resizable( "option", "maxHeight", blind_height_px);
+        $( ".blind" ).resizable( "option", "minHeight", step_size_px);
+    }
+    
+    var resize_tout;
+
+    $(window).resize(function() {
+        clearTimeout(resize_tout);
+        resize_tout = setTimeout(window_resize, 50);
+    });
+    
+</script>
+
+</body>
+</html>

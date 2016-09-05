@@ -1,0 +1,219 @@
+@font-face {
+  font-family: 'latolight';
+  src: url('lato-light-webfont.eot');
+  src: url('lato-light-webfont.eot?#iefix') format('embedded-opentype'),
+  url('lato-light-webfont.woff2') format('woff2'),
+  url('lato-light-webfont.woff') format('woff'),
+  url('lato-light-webfont.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    height:100% !important;
+    margin: 0;
+    padding: 0;
+    background: url('bg.jpg') 50% 50% !important;
+    background-size: 100% 100%;
+    background-attachment: fixed !important;
+    font-family: "latolight", helvetica, arial, sans-serif;
+}
+
+button, a, span {
+    font-family: "latolight", helvetica, arial, sans-serif;
+}
+
+
+
+#cl1 {
+    display: none;
+}
+
+.wrapper {
+    box-sizing: border-box;
+    padding: 80px 40px 180px 40px;
+    min-width: 320px;
+    max-width: 480px;
+    overflow: hidden;
+    margin: 0 auto;
+    position: relative;
+    height: 100%;
+}
+
+.wrapper2 {
+    position: absolute;
+    bottom: 0;
+    clear: both;
+    width: 100%;
+    padding: 0 0 20px 0;
+}
+
+.menu {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+.temperature {
+    width: 130px;
+    margin: 20px auto 0 auto;
+    color: #fff;
+    font-size: 32px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.temperature img {
+    float: left;
+    margin-top: 5px;
+    margin-right: 10px;
+}
+
+
+.window_outer {
+    box-sizing: border-box;
+    position: relative;
+    padding: 20px 20px;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    border: 3px #afafaf solid;
+    background: rgba(255,255,255,0.6);
+}
+
+.window_inner_frame {
+    box-sizing: border-box;
+    padding: 5px;
+    width: 100%;
+    height: 100%;
+    border: 1px #afafaf solid;
+    margin: 0 auto;
+}
+
+.window_inner_img {
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    background: url('window_bg.jpg') 50% 50%;
+    background-size: 100% 100%;
+    border: 1px #afafaf solid;
+}
+
+.blind {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(255,255,255,0.8);
+    width: 100%;
+    height: 10%;
+}
+
+
+
+.ui-resizable-handle.ui-resizable-s {
+    height: 100%;
+    cursor: pointer;
+}
+
+
+
+.icon {
+    display: block;
+    background-image: url('icons.png');
+    background-color: transparent;
+    background-repeat: no-repeat;
+    padding: 0;
+    border: none;
+    text-indent: -9999px;
+    outline: none;
+}
+
+.select_blind {
+    text-align: center;
+    position: relative;
+    margin: 20px auto 0 auto;
+    font-size: 16px;
+    color: #a2a2a2;
+}
+
+.select_blind .icon {
+    width: 18px;
+    height: 22px;
+    top: 3px;
+    display: inline-block;
+}
+
+.select_blind span {
+    display: inline-block;
+    height: 22px;
+}
+
+.icon.left {
+    background-position: -18px -330px;
+}
+
+.icon.right {
+    background-position: -75px -330px;
+}
+
+.menu .icon {
+    width: 50px;
+    height: 50px;
+    margin: 0 auto;
+}
+
+.icon.live {
+    background-position: 5px -50px;
+}
+
+.icon.schedule {
+    background-position: 5px -107px;
+}
+
+.icon.settings {
+    background-position: 5px -167px;
+}
+
+.menu button {
+    outline: none;
+    border: none;
+    background: none;
+    padding: 0;
+    width: 32%;
+    color: #a2a2a2;
+    cursor: pointer;
+}
+
+.menu .btn-title {
+    text-align: center;
+}
+
+hr {
+    clear: both;
+    display: block;
+    background: #bfbfbf;
+    border: none;
+    outline: none;
+    height: 1px;
+    width: 100%;
+    margin: 0 0 20px 0;
+}
+
+#page-bot-ui #infobar #inactiveinfo, #inactive-info {
+    display: none !important; /* ukrywanie komunikatu o nieaktywnosci uzytkownika */
+}
+
+#controls {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none; /* ukrywanie przyciskow */
+}
