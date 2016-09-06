@@ -77,6 +77,8 @@
 
 <console id="cl1"></console>
 
+<slider id="slider1" style="display: none;"></slider>
+
 <script>
     
     var blind_height_px;
@@ -89,7 +91,10 @@
         var current_blind_pos_px = ui.size.height;
         var current_step = Math.round(current_blind_pos_px / step_size_px) - 1;
         
-        $('#b'+current_step).trigger('mousedown');
+        var v = (current_blind_pos_px - 58) / (584 - 58) * 1000;
+        
+        $("#slider1").slider("value", v);
+        //$('#b'+current_step).trigger('mousedown');
         
         // ctrls_tout = setTimeout(function() {
         //     $('#controls button').trigger('mouseup');
@@ -106,10 +111,7 @@
             minHeight: 20,
             maxHeight: blind_height_px
         }).on('resize', function(event, ui) {
-            clearTimeout(tout);
-            tout = setTimeout(function() {
-                blind_change(event, ui)
-            }, 20);
+            blind_change(event, ui);
         }).on('resizestop', function(event, ui) {
             $('#controls button').trigger('mouseup')
         }).on('resizestart', function(event, ui) {
