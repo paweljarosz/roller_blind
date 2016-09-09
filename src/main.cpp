@@ -57,9 +57,6 @@ void onValueChangeEvent(hId id, const char* data)
 	hMot3.rotAbs(map(val, 0, 1000, -1050, 7000), 700);
 }
 
-void onButtonEvent(hId id, ButtonEventType type)
-{}
-
 void hMain()
 {
 	act_pos = 0;
@@ -69,7 +66,6 @@ void hMain()
 	platform.ui.configHandler = cfgHandler;
 	platform.ui.onKeyEvent = onKeyEvent;
 	platform.ui.onValueChangeEvent = onValueChangeEvent;
-	platform.ui.onButtonEvent = onButtonEvent;
 	sys.taskCreate(calibration_task);               //calibration at the beginning
 
 	for (;;) {
