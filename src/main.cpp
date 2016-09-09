@@ -6,16 +6,12 @@
 #define power 500       //power of motor
 #define length 6500     //length of blind window in encoder tics
 #define dir -1          //direction of rotation of motor (for calibration)
-#define n_of_buttons 10 //number of buttons (change in code)
 #define offset 460      //offset for end-point
 
 int act_pos, des_pos;   //actual position, desired position
 
 void cfgHandler()                               //UI
 {
-	auto btn1 = platform.ui.button("btn1");
-	auto btn2 = platform.ui.button("btn2");
-
 	platform.ui.loadHtml({Resource::WEBIDE, "/ui.html"});
 }
 
@@ -61,12 +57,15 @@ void onValueChangeEvent(hId id, const char* data)
 	hMot3.rotAbs(map(val, 0, 1000, -1050, 7000), 700);
 }
 
+void onButtonEvent(hId id, ButtonEventType type)
+{}
+
 void hMain()
 {
 	act_pos = 0;
 	des_pos = 500;
 	platform.begin(&RPi);
-	platform.ui.setProjectId("d520f805929ddb0a");
+	platform.ui.setProjectId("@@@PROJECT_ID@@@");
 	platform.ui.configHandler = cfgHandler;
 	platform.ui.onKeyEvent = onKeyEvent;
 	platform.ui.onValueChangeEvent = onValueChangeEvent;
